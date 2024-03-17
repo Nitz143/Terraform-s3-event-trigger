@@ -15,7 +15,7 @@ def lambda_handler(event, context):
 
     logger.info("Received file in bucket: %s, file name: %s", bucket_name, object_key)
 
-    # Extract file name and creation timestamp
+  
     file_name = object_key.split("/")[-1]
       
     creation_timestamp = datetime.utcnow().isoformat()
@@ -23,8 +23,8 @@ def lambda_handler(event, context):
     json_data = json.dumps(data)
     print(f"Metadata written to ElastiCache: {data}")
 
-    # Write to ElastiCache (Redis) with key:value pair
-    redis_endpoint = "test-redis-cluster.jklmh8.0001.aps1.cache.amazonaws.com"  # Replace with your Redis endpoint
+    
+    redis_endpoint = "test-redis-cluster.jklmh8.0001.aps1.cache.amazonaws.com"  
     redis_client = redis.StrictRedis(host=redis_endpoint, port=6379, decode_responses=True)
     
     print(f"Connect to ElastiCache: {redis_client}")
